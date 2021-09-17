@@ -29,10 +29,14 @@
 	},
 	"homepage": "https://github.com/zoruka/rick-and-morty-consumer#readme",
 	"dependencies": {
-		"axios": "^0.21.4"
+		"axios": "^0.21.4",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
 	},
 	"devDependencies": {
 		"@types/jest": "^27.0.1",
+		"@types/react": "^17.0.21",
+		"@types/react-dom": "^17.0.9",
 		"@typescript-eslint/eslint-plugin": "^4.31.1",
 		"@typescript-eslint/parser": "^4.31.1",
 		"eslint": "^7.32.0",

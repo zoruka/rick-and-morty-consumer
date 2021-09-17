@@ -1,3 +1,4 @@
+import { HttpError } from '@/data/protocols';
 import { NetworkFindCharacters } from '@/data/usecases';
 import { FindCharacters } from '@/domain/usecases';
 import { mockCharacterPagination } from '@/tests/domain/models/character-mocks';
@@ -36,7 +37,7 @@ describe('NetworkFindCharacters', () => {
 		};
 
 		const promise = sut.find();
-		await expect(promise).rejects.toThrow();
+		await expect(promise).rejects.toThrowError(HttpError);
 	});
 
 	test('should call HttpClient with correct values', async () => {

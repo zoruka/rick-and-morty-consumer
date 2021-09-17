@@ -8,4 +8,9 @@ export namespace Episode {
 		url: string; // URL
 		created: string;
 	};
+
+	export type Filter = {
+		name?: string;
+		episode?: string;
+	};
 }

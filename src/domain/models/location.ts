@@ -13,4 +13,10 @@ export namespace Location {
 		url: string; // URL
 		created: string;
 	};
+
+	export type Filter = {
+		name?: string;
+		type?: string;
+		dimension?: string;
+	};
 }

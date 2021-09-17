@@ -1,4 +1,4 @@
-import { Http, HttpClient } from '@/data/protocols';
+import { Http, HttpClient, HttpError } from '@/data/protocols';
 import { FindCharacters } from '@/domain/usecases';
 
 export class NetworkFindCharacters implements FindCharacters {
@@ -17,7 +17,7 @@ export class NetworkFindCharacters implements FindCharacters {
 		});
 
 		if (requestResponse.statusCode !== Http.StatusCode.Ok)
-			throw new Error();
+			throw new HttpError(this.path, requestResponse);
 
 		return requestResponse.body;
 	}

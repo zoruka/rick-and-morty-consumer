@@ -6,7 +6,7 @@ module.exports = {
 	coverageProvider: 'v8',
 	testEnvironment: 'node',
 	transform: {
-		'.+\\.ts$': 'ts-jest',
+		'.+\\.(ts|tsx)$': 'ts-jest',
 	},
 	moduleNameMapper: {
 		'@/tests/(.*)': '<rootDir>/tests/$1',

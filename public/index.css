@@ -1,3 +1,7 @@
+html {
+	box-sizing: border-box;
+}
+
 body {
 	background-color: #211033;
 	color: #fff;
@@ -7,4 +11,5 @@ body {
 
 * {
 	font-family: 'Lato', 'Roboto', 'Helvetica', sans-serif;
+	box-sizing: inherit;
 }

@@ -5,7 +5,7 @@ export namespace API {
 		count: number;
 		pages: number;
 		next: string | null;
-		previous: string | null;
+		prev: string | null;
 	};
 
 	export type Pagination<

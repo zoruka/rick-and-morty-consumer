@@ -4,6 +4,8 @@
 	"description": "A React application that consumes Rick And Morty API.",
 	"main": "index.js",
 	"scripts": {
+		"build": "webpack --config webpack.config.js",
+		"start": "webpack-cli serve --open --mode development",
 		"test": "node ./node_modules/jest/bin/jest.js --passWithNoTests --runInBand --no-cache --logHeapUsage",
 		"test:unit": "npm test -- --watch -c jest-unit.config.js",
 		"test:staged": "npm test -- --findRelatedTests",
@@ -41,6 +43,7 @@
 		"@types/react-router-dom": "^5.1.9",
 		"@typescript-eslint/eslint-plugin": "^4.31.1",
 		"@typescript-eslint/parser": "^4.31.1",
+		"clean-webpack-plugin": "^4.0.0",
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^4.0.0",
@@ -48,6 +51,10 @@
 		"nock": "^13.1.3",
 		"prettier": "^2.4.1",
 		"ts-jest": "^27.0.5",
-		"typescript": "^4.4.3"
+		"ts-loader": "^9.2.5",
+		"typescript": "^4.4.3",
+		"webpack": "^5.53.0",
+		"webpack-cli": "^4.8.0",
+		"webpack-dev-server": "^4.2.1"
 	}
 }

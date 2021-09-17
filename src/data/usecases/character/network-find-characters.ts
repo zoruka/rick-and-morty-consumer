@@ -8,7 +8,7 @@ export class NetworkFindCharacters implements FindCharacters {
 	) {}
 
 	async find(
-		params: FindCharacters.Params
+		params: FindCharacters.Params = {}
 	): Promise<FindCharacters.Response> {
 		const requestResponse = await this.httpClient.request({
 			method: 'get',
@@ -17,7 +17,7 @@ export class NetworkFindCharacters implements FindCharacters {
 		});
 
 		if (requestResponse.statusCode !== Http.StatusCode.Ok)
-			throw requestResponse.body;
+			throw new Error();
 
 		return requestResponse.body;
 	}

@@ -3,8 +3,8 @@ import { HttpClientAdapter } from '@/infra/http';
 
 const sut = makeHttpClientAdapter;
 
-describe('makeHttpEndpoint', () => {
-	test('should create and endpoint', () => {
+describe('makeHttpClientAdapter', () => {
+	test('should create an adapter', () => {
 		const adapter = sut();
 		expect(adapter).toBeInstanceOf(HttpClientAdapter);
 	});

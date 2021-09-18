@@ -13,12 +13,12 @@ export type FooterPagerProps = {
 };
 
 const calculateFrom = (page: number): number => {
-	const from = (page - 1) * 20;
+	const from = (page - 1) * 20 + 1;
 	return from < 0 ? 0 : from;
 };
 
 const calculateTo = (page: number, count: number): number => {
-	const to = page * 20;
+	const to = page * 20 + 1;
 	return to > count ? count : to;
 };
 

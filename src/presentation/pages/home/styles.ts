@@ -20,5 +20,6 @@ export namespace HomePageStyle {
 		width: 100%;
 		max-width: 1600px;
 		margin-bottom: 100px;
+		min-height: calc(100vh - 200px); ;
 	`;
 }

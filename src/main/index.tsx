@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import { Router } from '@/main/router';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './configs';
+import { ContextProvider } from '@/presentation/context';
 
 const App: React.FC = () => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Router />
+			<ContextProvider>
+				<Router />
+			</ContextProvider>
 		</ThemeProvider>
 	);
 };

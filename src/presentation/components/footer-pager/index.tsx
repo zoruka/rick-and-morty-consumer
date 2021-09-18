@@ -29,7 +29,7 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ totalPages }) => {
 			const width =
 				window.innerWidth < 600 ? window.innerWidth - 90 : 600;
 
-			const total = Math.floor(width / buttonSize);
+			const total = Math.min(Math.floor(width / buttonSize), totalPages);
 
 			let from = currentPage - Math.floor(total / 2);
 			let to = currentPage + Math.floor(total / 2);

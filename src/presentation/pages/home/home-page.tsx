@@ -11,18 +11,25 @@ type Props = {
 };
 
 export const HomePage: React.FC<Props> = ({ findCharacters }) => {
-	const { page } = useContext();
+	const { page, filter } = useContext();
 
 	const [info, setInfo] = useState<API.Info>();
 	const [characters, setCharacters] = useState<Character.Model[]>();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
-		findCharacters.find({ page }).then((response) => {
+		findCharacters.find({ page, ...filter }).then((response) => {
 			setInfo(response.info);
 			setCharacters(response.results);
 		});
-	}, [page]);
+	}, [
+		page,
+		filter.gender,
+		filter.name,
+		filter.status,
+		filter.type,
+		filter.species,
+	]);
 
 	return (
 		<Styled.Container>

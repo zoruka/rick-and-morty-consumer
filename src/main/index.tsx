@@ -15,4 +15,6 @@ const App: React.FC = () => {
 	);
 };
 
-ReactDOM.render(<App />, document.getElementById('main'));
+setTimeout(() => {
+	ReactDOM.render(<App />, document.getElementById('main'));
+}, 300);

@@ -1,24 +1,25 @@
-import React, { useEffect } from 'react';
+import {
+	ContextActions,
+	useContext,
+	useContextDispatcher,
+} from '@/presentation/context';
+import React, { useEffect, useState } from 'react';
 import { FooterPagerStyles as Styled } from './styles';
 
 export type FooterPagerProps = {
-	currentPage: number;
 	totalPages: number;
-	requestPage: (page: number) => void;
 };
 
-export const FooterPager: React.FC<FooterPagerProps> = ({
-	totalPages,
-	currentPage,
-	requestPage,
-}) => {
-	const [pages, setPages] = React.useState<number[]>([]);
+export const FooterPager: React.FC<FooterPagerProps> = ({ totalPages }) => {
+	const [pages, setPages] = useState<number[]>([]);
+	const { page: currentPage } = useContext();
+	const dispatcher = useContextDispatcher();
 
 	const changePage = (delta: number): void => {
 		let newPage = currentPage + delta;
 		if (newPage > totalPages) newPage = totalPages;
 		else if (newPage < 1) newPage = 1;
-		requestPage(newPage);
+		dispatcher(ContextActions.setPage(newPage));
 	};
 
 	useEffect(() => {
@@ -66,7 +67,7 @@ export const FooterPager: React.FC<FooterPagerProps> = ({
 				<Styled.Button
 					key={page}
 					className={page === currentPage ? '__active' : ''}
-					onClick={() => requestPage(page)}
+					onClick={() => changePage(page - currentPage)}
 				>
 					{page}
 				</Styled.Button>

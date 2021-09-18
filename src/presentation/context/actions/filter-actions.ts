@@ -21,3 +21,10 @@ export const filterByGender = (gender: Character.Gender): DispatchAction => {
 		payload: { page: 1, offset: 0, filter: { gender } },
 	};
 };
+
+export const filterAll = (filter: Character.Filter): DispatchAction => {
+	return {
+		type: 'FILTER_BY_ALL',
+		payload: { page: 1, offset: 0, filter: { ...filter } },
+	};
+};

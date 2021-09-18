@@ -22,4 +22,12 @@ export namespace HomePageStyle {
 		margin-bottom: 100px;
 		min-height: calc(100vh - 200px); ;
 	`;
+
+	export const LoadingContainer = styled('div')`
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: calc(100vh - 200px);
+	`;
 }

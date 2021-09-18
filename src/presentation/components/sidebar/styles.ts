@@ -11,7 +11,7 @@ export namespace SidebarStyles {
 	export const Container = styled('div')`
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		padding: 15% 0;
 		height: 100%;
@@ -19,6 +19,7 @@ export namespace SidebarStyles {
 			text-transform: uppercase;
 			font-weight: bolder;
 		}
+		overflow: auto;
 	`;
 
 	export const Select = styled(MuiSelect)``;

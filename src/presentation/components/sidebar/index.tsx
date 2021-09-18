@@ -13,6 +13,8 @@ import {
 	TextField,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { HeaderStyles } from '../header/styles';
+import { MainSectionStyles } from '../main-section/styles';
 import { Strings } from './strings';
 import { SidebarStyles as Styled } from './styles';
 
@@ -50,7 +52,7 @@ export const Sidebar: React.FC = () => {
 
 	useEffect(() => {
 		const resize = (): void => {
-			if (window.innerWidth < 768) {
+			if (window.innerWidth < MainSectionStyles.MinWidth) {
 				dispatcher(ContextActions.closeSidebar());
 			} else {
 				dispatcher(ContextActions.openSidebar());
@@ -70,6 +72,9 @@ export const Sidebar: React.FC = () => {
 				gender: genderFilter,
 			})
 		);
+		if (window.innerWidth < MainSectionStyles.MinWidth) {
+			dispatcher(ContextActions.closeSidebar());
+		}
 	};
 
 	return (
@@ -80,6 +85,8 @@ export const Sidebar: React.FC = () => {
 				'& .MuiDrawer-paper': {
 					width: Styled.Width,
 					boxSizing: 'border-box',
+					top: HeaderStyles.Height,
+					height: `calc(100% - ${HeaderStyles.Height}px)`,
 				},
 			}}
 			variant="persistent"

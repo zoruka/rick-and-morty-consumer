@@ -27,9 +27,11 @@ export const EpisodesFragment: React.FC<EpisodesFragmentProps> = ({
 		fetchEpisodes
 			.fetch({ ids })
 			.then((res) => setEpisodes(Array.isArray(res) ? res : [res]))
+			.catch(() => setEpisodes([]))
 			.finally(() => setLoading(false));
 	}, []);
 
+	if (episodes && episodes.length === 0) return null;
 	return (
 		<Styled.Container>
 			{loading && (

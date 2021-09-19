@@ -1,4 +1,4 @@
-import { styled, Button as MuiButton } from '@mui/material';
+import { styled, Button as MuiButton, Fab as MuiFab } from '@mui/material';
 
 export namespace HomePageStyles {
 	export const Container = styled('div')`
@@ -16,6 +16,19 @@ export namespace HomePageStyles {
 		justify-content: center;
 		align-items: center;
 		min-height: calc(100vh - 200px);
+	`;
+
+	export type FabProps = {
+		show: boolean;
+	};
+
+	export const Fab = styled(MuiFab)`
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+
+		transition: opacity 0.3s ease-in-out;
+		opacity: ${(props: FabProps) => (props.show ? 1 : 0)};
 	`;
 }
 

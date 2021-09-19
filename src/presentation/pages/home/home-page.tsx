@@ -12,6 +12,7 @@ import React, { useEffect, useState } from 'react';
 import { ErrorFragment } from './error-fragment';
 import { ListFragment } from './list-fragment';
 import { HomePageStyles as Styled } from './styles';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 type Props = {
 	findCharacters: FindCharacters;
@@ -25,6 +26,7 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 	const [loading, setLoading] = useState(false);
 	const [info, setInfo] = useState<API.Info>();
 	const [characters, setCharacters] = useState<Character.Model[]>();
+	const [showFab, setShowFab] = useState(false);
 
 	const fetchData = (): void => {
 		setLoading(true);
@@ -41,6 +43,10 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 			.finally(() => setLoading(false));
 	};
 
+	const scrollToTopClickHandler = (): void => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
 	useEffect(() => {
 		if (characters) {
 			setTimeout(() => {
@@ -54,6 +60,19 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 			dispatcher(ContextActions.openSidebar());
 		}
 	}, []);
+
+	useEffect(() => {
+		const fabListener = (): void => {
+			if (window.scrollY > window.innerHeight && !showFab) {
+				setShowFab(true);
+			} else if (window.scrollY < window.innerHeight && showFab) {
+				setShowFab(false);
+			}
+		};
+
+		window.addEventListener('scroll', fabListener);
+		return () => window.removeEventListener('scroll', fabListener);
+	}, [showFab]);
 
 	useEffect(fetchData, [
 		page,
@@ -75,6 +94,13 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 				<ListFragment characters={characters} info={info} />
 			)}
 			{!loading && hasError && <ErrorFragment reload={fetchData} />}
+			<Styled.Fab
+				show={showFab}
+				color="primary"
+				onClick={scrollToTopClickHandler}
+			>
+				<NavigationIcon />
+			</Styled.Fab>
 		</Styled.Container>
 	);
 };

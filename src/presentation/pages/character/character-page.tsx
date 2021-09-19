@@ -1,6 +1,15 @@
+import { Character, Episode } from '@/domain/models';
 import { FetchCharacterById, FetchEpisodes } from '@/domain/usecases';
-import React from 'react';
+import { Loading } from '@/presentation/components';
+import {
+	ContextActions,
+	useContext,
+	useContextDispatcher,
+} from '@/presentation/context';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { CharacterDataFragment } from './character-data-fragment';
+import { EpisodesFragment } from './episodes-fragment';
 import { CharacterPageStyles as Styled } from './styles';
 
 export type CharacterPageProps = {
@@ -17,5 +26,35 @@ export const CharacterPage: React.FC<CharacterPageProps> = ({
 	fetchEpisodes,
 }) => {
 	const urlParams = useParams<CharacterPageParams>();
-	return <Styled.Container>{urlParams.id}</Styled.Container>;
+	const { selectedCharacter } = useContext();
+	const dispatcher = useContextDispatcher();
+
+	const [characterLoading, setCharacterLoading] = useState(
+		!selectedCharacter
+	);
+
+	useEffect(() => {
+		const characterId = Number(urlParams.id);
+		fetchCharacterById
+			.fetchById({ id: characterId })
+			.then((character) => {
+				dispatcher(ContextActions.setCharacter(character));
+			})
+			.finally(() => setCharacterLoading(false));
+	}, []);
+
+	return (
+		<Styled.Container>
+			{characterLoading && <Loading />}
+			{!characterLoading && (
+				<>
+					<CharacterDataFragment character={selectedCharacter} />
+					<EpisodesFragment
+						fetchEpisodes={fetchEpisodes}
+						character={selectedCharacter}
+					/>
+				</>
+			)}
+		</Styled.Container>
+	);
 };

@@ -101,12 +101,6 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ info }) => {
 				<b>{info.count}</b>
 				{Strings.Results}
 			</Styled.PagerDetails>
-			<Styled.Footer>
-				{Strings.MadeWith}
-				<a href="https://github.com/zoruka" target="_blank">
-					zoruka
-				</a>
-			</Styled.Footer>
 		</Styled.Container>
 	);
 };

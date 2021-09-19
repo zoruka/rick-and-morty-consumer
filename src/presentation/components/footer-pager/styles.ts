@@ -74,22 +74,4 @@ export namespace FooterPagerStyles {
 			color: ${({ theme }) => theme.palette.background.paper};
 		}
 	`;
-
-	export const Footer = styled('footer')`
-		width: 100%;
-		height: 50px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		background: ${({ theme }) => theme.palette.primary.main};
-		color: ${({ theme }) => theme.palette.background.paper};
-
-		font-weight: bolder;
-
-		a {
-			margin: 0 5px;
-			color: ${({ theme }) => theme.palette.common.white};
-		}
-	`;
 }

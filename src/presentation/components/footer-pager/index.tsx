@@ -33,6 +33,7 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ info }) => {
 		if (newPage > info.pages) newPage = info.pages;
 		else if (newPage < 1) newPage = 1;
 		dispatcher(ContextActions.setPage(newPage));
+		dispatcher(ContextActions.setOffset(0));
 	};
 
 	useEffect(() => {

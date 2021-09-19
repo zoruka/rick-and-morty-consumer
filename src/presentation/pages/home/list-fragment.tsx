@@ -20,6 +20,7 @@ export const ListFragment: React.FC<ListFragmentProps> = ({
 
 	const clickHandler = (character: Character.Model): void => {
 		dispatcher(ContextActions.setCharacter(character));
+		dispatcher(ContextActions.setOffset(window.scrollY));
 		history.push(`character/${character.id}`);
 	};
 

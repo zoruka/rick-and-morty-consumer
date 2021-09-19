@@ -32,7 +32,11 @@ export const EpisodesFragment: React.FC<EpisodesFragmentProps> = ({
 
 	return (
 		<Styled.Container>
-			{loading && <Loading />}
+			{loading && (
+				<Styled.TabContainer>
+					<Loading />
+				</Styled.TabContainer>
+			)}
 			{!loading && (
 				<>
 					<Tabs

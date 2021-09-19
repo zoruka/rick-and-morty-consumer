@@ -1,4 +1,3 @@
-import { Character, Episode } from '@/domain/models';
 import { FetchCharacterById, FetchEpisodes } from '@/domain/usecases';
 import { Loading } from '@/presentation/components';
 import {
@@ -6,10 +5,13 @@ import {
 	useContext,
 	useContextDispatcher,
 } from '@/presentation/context';
+import ChevronLeft from '@mui/icons-material/ChevronLeft';
+import Button from '@mui/material/Button';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { CharacterDataFragment } from './character-data-fragment';
 import { EpisodesFragment } from './episodes-fragment';
+import { Strings } from './strings';
 import { CharacterPageStyles as Styled } from './styles';
 
 export type CharacterPageProps = {
@@ -28,10 +30,15 @@ export const CharacterPage: React.FC<CharacterPageProps> = ({
 	const urlParams = useParams<CharacterPageParams>();
 	const { selectedCharacter } = useContext();
 	const dispatcher = useContextDispatcher();
+	const history = useHistory();
 
 	const [characterLoading, setCharacterLoading] = useState(
 		!selectedCharacter
 	);
+
+	const backClickHandler = (): void => {
+		history.replace('/');
+	};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -43,6 +50,10 @@ export const CharacterPage: React.FC<CharacterPageProps> = ({
 				dispatcher(ContextActions.setCharacter(character));
 			})
 			.finally(() => setCharacterLoading(false));
+
+		return () => {
+			dispatcher(ContextActions.clearCharacter());
+		};
 	}, []);
 
 	return (
@@ -50,6 +61,12 @@ export const CharacterPage: React.FC<CharacterPageProps> = ({
 			{characterLoading && <Loading />}
 			{!characterLoading && (
 				<>
+					<Styled.BackButtonContainer>
+						<Button color="secondary" onClick={backClickHandler}>
+							<ChevronLeft color="secondary" />
+							{Strings.Button.Back}
+						</Button>
+					</Styled.BackButtonContainer>
 					<CharacterDataFragment character={selectedCharacter} />
 					<EpisodesFragment
 						fetchEpisodes={fetchEpisodes}

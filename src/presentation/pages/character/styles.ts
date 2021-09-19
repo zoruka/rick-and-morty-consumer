@@ -5,8 +5,17 @@ export namespace CharacterPageStyles {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 1200px;
+	`;
+
+	export const BackButtonContainer = styled('div')`
+		height: 70px;
+		display: flex;
 		justify-content: flex-start;
 		align-items: center;
+		width: 100%;
 	`;
 }
 

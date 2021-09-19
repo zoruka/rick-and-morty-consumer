@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { FindCharacters } from '@/domain/usecases';
 import { Character } from '@/domain/models';
-import { Loading } from '@/presentation/components';
-import { HomePageStyles as Styled } from './styles';
 import { API } from '@/domain/models/api';
-import { useContext } from '@/presentation/context';
+import { FindCharacters } from '@/domain/usecases';
+import { Loading } from '@/presentation/components';
+import { MainSectionStyles } from '@/presentation/components/main-section/styles';
+import {
+	ContextActions,
+	useContext,
+	useContextDispatcher,
+} from '@/presentation/context';
+import React, { useEffect, useState } from 'react';
 import { ErrorFragment } from './error-fragment';
 import { ListFragment } from './list-fragment';
+import { HomePageStyles as Styled } from './styles';
 
 type Props = {
 	findCharacters: FindCharacters;
 };
 
 export const HomePage: React.FC<Props> = ({ findCharacters }) => {
-	const { page, filter } = useContext();
+	const { page, filter, offset } = useContext();
+	const dispatcher = useContextDispatcher();
 
 	const [hasError, setError] = useState(true);
 	const [loading, setLoading] = useState(false);
@@ -21,7 +27,6 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 	const [characters, setCharacters] = useState<Character.Model[]>();
 
 	const fetchData = (): void => {
-		window.scrollTo(0, 0);
 		setLoading(true);
 		setInfo(undefined);
 		setCharacters(undefined);
@@ -35,6 +40,20 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 			.catch(() => setError(true))
 			.finally(() => setLoading(false));
 	};
+
+	useEffect(() => {
+		if (characters) {
+			setTimeout(() => {
+				window.scrollTo({ top: offset, behavior: 'smooth' });
+			}, 10);
+		}
+	}, [characters]);
+
+	useEffect(() => {
+		if (window.innerWidth > MainSectionStyles.MinWidth) {
+			dispatcher(ContextActions.openSidebar());
+		}
+	}, []);
 
 	useEffect(fetchData, [
 		page,

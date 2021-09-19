@@ -11,4 +11,7 @@ export const Strings = {
 		AirDate: 'Air Date',
 		Episode: 'Episode',
 	},
+	Button: {
+		Back: 'Back',
+	},
 };

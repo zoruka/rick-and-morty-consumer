@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
 	return (
 		<Styled.Container>
 			<Styled.Chevron sidebar={sidebar} onClick={chevronClickHandler} />
-			<Styled.Logo src="/logo.svg" alt="Avatar" />
+			<Styled.Logo src="/logo.svg" alt="Logo" />
 		</Styled.Container>
 	);
 };

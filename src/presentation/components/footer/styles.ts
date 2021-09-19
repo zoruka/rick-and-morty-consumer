@@ -3,6 +3,7 @@ import { MainSectionStyles } from '../main-section/styles';
 import { SidebarStyles } from '../sidebar/styles';
 
 export namespace FooterStyles {
+	export const Height = 50;
 	export type ContainerProps = {
 		sidebar: boolean;
 	};
@@ -19,7 +20,7 @@ export namespace FooterStyles {
 				? SidebarStyles.Width
 				: 0}px;
 
-		height: 50px;
+		height: ${Height}px;
 		display: flex;
 		justify-content: center;
 		align-items: center;

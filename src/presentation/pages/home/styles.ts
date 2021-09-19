@@ -2,6 +2,7 @@ import { styled, Button as MuiButton, Fab as MuiFab } from '@mui/material';
 
 export namespace HomePageStyles {
 	export const Container = styled('div')`
+		flex: 1;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -73,6 +74,5 @@ export namespace ListFragmentStyles {
 		width: 100%;
 		max-width: 1600px;
 		margin-bottom: 100px;
-		min-height: calc(100vh - 200px); ;
 	`;
 }

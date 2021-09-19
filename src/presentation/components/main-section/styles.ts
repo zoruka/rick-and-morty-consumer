@@ -1,4 +1,5 @@
 import { styled } from '@mui/material';
+import { FooterStyles } from '../footer/styles';
 import { HeaderStyles } from '../header/styles';
 import { SidebarStyles } from '../sidebar/styles';
 
@@ -11,6 +12,9 @@ export namespace MainSectionStyles {
 
 	export const Container = styled('main')<ContainerProps>`
 		margin-top: ${HeaderStyles.Height}px;
+		min-height: calc(
+			100vh - ${HeaderStyles.Height + FooterStyles.Height}px
+		);
 		width: calc(
 			100% -
 				${({ sidebar }) =>

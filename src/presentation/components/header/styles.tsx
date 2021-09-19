@@ -20,7 +20,10 @@ export namespace HeaderStyles {
 		border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 	`;
 
-	export const Logo = styled('img')`
+	export const LogoContainer = styled('div')`
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		height: calc(${Height}px * 0.7);
 		flex: 1;
 		margin-left: -60px;

@@ -4,6 +4,7 @@ import {
 	useContextDispatcher,
 } from '@/presentation/context';
 import React from 'react';
+import { Logo } from '..';
 import { HeaderStyles as Styled } from './styles';
 
 export const Header: React.FC = () => {
@@ -21,7 +22,9 @@ export const Header: React.FC = () => {
 	return (
 		<Styled.Container>
 			<Styled.Chevron sidebar={sidebar} onClick={chevronClickHandler} />
-			<Styled.Logo src="/logo.svg" alt="Logo" />
+			<Styled.LogoContainer>
+				<Logo />
+			</Styled.LogoContainer>
 		</Styled.Container>
 	);
 };

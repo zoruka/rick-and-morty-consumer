@@ -6,6 +6,8 @@ export type Store = {
 	offset: number;
 
 	filter: Character.Filter;
+
+	selectedCharacter?: Character.Model;
 };
 
 export const initialStore: Store = {
@@ -13,4 +15,5 @@ export const initialStore: Store = {
 	page: 1,
 	offset: 0,
 	filter: {},
+	selectedCharacter: undefined,
 };

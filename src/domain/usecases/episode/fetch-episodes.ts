@@ -8,5 +8,5 @@ export namespace FetchEpisodes {
 	export type Params = {
 		ids: number[];
 	};
-	export type Response = Episode.Model[];
+	export type Response = Episode.Model | Episode.Model[];
 }

@@ -13,7 +13,6 @@ export class NetworkFetchEpisodes implements FetchEpisodes {
 		const requestResponse = await this.httpClient.request({
 			method: 'get',
 			url,
-			params,
 		});
 
 		if (requestResponse.statusCode !== Http.StatusCode.Ok)

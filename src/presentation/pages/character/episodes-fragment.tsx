@@ -26,7 +26,7 @@ export const EpisodesFragment: React.FC<EpisodesFragmentProps> = ({
 		);
 		fetchEpisodes
 			.fetch({ ids })
-			.then((res) => setEpisodes(res))
+			.then((res) => setEpisodes(Array.isArray(res) ? res : [res]))
 			.finally(() => setLoading(false));
 	}, []);
 

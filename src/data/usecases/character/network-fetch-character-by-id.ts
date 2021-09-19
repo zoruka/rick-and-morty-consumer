@@ -15,7 +15,6 @@ export class NetworkFetchCharacterById implements FetchCharacterById {
 		const requestResponse = await this.httpClient.request({
 			method: 'get',
 			url,
-			params,
 		});
 
 		if (requestResponse.statusCode !== Http.StatusCode.Ok)

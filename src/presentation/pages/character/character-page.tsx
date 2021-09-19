@@ -34,6 +34,8 @@ export const CharacterPage: React.FC<CharacterPageProps> = ({
 	);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+		dispatcher(ContextActions.closeSidebar());
 		const characterId = Number(urlParams.id);
 		fetchCharacterById
 			.fetchById({ id: characterId })

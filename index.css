@@ -1,0 +1,30 @@
+html {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #211033;
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	font-family: 'Lato', 'Roboto', 'Helvetica', sans-serif;
+	box-sizing: inherit;
+}
+
+#initial-loading-container {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#initial-loading-container img {
+	width: 200px;
+}

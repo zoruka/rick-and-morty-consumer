@@ -15,7 +15,7 @@ export const Strings = {
 		Search: 'Do it Morty!',
 	},
 	Heading: {
-		Filter: 'Filters',
+		Filter: 'Search',
 	},
 	Quotes: [
 		'Wubba Lubba Dub Dub!',

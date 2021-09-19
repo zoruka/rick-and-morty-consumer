@@ -13,6 +13,7 @@ import {
 	TextField,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { HeaderStyles } from '../header/styles';
 import { MainSectionStyles } from '../main-section/styles';
 import { Strings } from './strings';
@@ -44,6 +45,7 @@ const randomQuote = (): string => {
 export const Sidebar: React.FC = () => {
 	const { sidebar } = useContext();
 	const dispatcher = useContextDispatcher();
+	const history = useHistory();
 
 	const [nameFilter, setNameFilter] = useState<string>('');
 	const [statusFilter, setStatusFilter] = useState<Character.Status>();
@@ -75,6 +77,7 @@ export const Sidebar: React.FC = () => {
 		if (window.innerWidth < MainSectionStyles.MinWidth) {
 			dispatcher(ContextActions.closeSidebar());
 		}
+		history.replace('/');
 	};
 
 	return (

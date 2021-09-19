@@ -26,6 +26,7 @@ export namespace HomePageStyles {
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
+		z-index: 9999;
 
 		transition: opacity 0.3s ease-in-out;
 		opacity: ${(props: FabProps) => (props.show ? 1 : 0)};

@@ -20,7 +20,7 @@ This project is based on some known React.js libraries such as:
 git clone https://github.com/zoruka/rick-and-morty-consumer
 
 # Open folder
-cd rick-and-morty-tracker
+cd rick-and-morty-consumer
 
 # Install dependencies
 npm install

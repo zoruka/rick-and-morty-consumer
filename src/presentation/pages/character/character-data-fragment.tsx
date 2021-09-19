@@ -16,6 +16,13 @@ export const CharacterDataFragment: React.FC<CharacterDataFragmentProps> = ({
 			<Styled.DataContainer>
 				<Styled.DataRow>
 					<Styled.DataSubtitle>
+						{Strings.Label.Id}
+					</Styled.DataSubtitle>
+					<Styled.DataText>{character.id || '-'}</Styled.DataText>
+				</Styled.DataRow>
+
+				<Styled.DataRow>
+					<Styled.DataSubtitle>
 						{Strings.Label.Name}
 					</Styled.DataSubtitle>
 					<Styled.DataText>{character.name || '-'}</Styled.DataText>

@@ -8,5 +8,7 @@ export const Strings = {
 		Gender: 'Gender',
 		Origin: 'Origin',
 		Created: 'Created',
+		AirDate: 'Air Date',
+		Episode: 'Episode',
 	},
 };

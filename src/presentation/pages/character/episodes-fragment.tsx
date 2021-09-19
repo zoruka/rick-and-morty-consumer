@@ -2,6 +2,10 @@ import { Character, Episode } from '@/domain/models';
 import { FetchEpisodes } from '@/domain/usecases';
 import { Loading } from '@/presentation/components';
 import React, { useEffect, useState } from 'react';
+import { EpisodesFragmentStyles as Styled } from './styles';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import { Strings } from './strings';
 
 export type EpisodesFragmentProps = {
 	character: Character.Model;
@@ -14,6 +18,7 @@ export const EpisodesFragment: React.FC<EpisodesFragmentProps> = ({
 }) => {
 	const [loading, setLoading] = useState(true);
 	const [episodes, setEpisodes] = useState<Episode.Model[]>();
+	const [index, setIndex] = useState(0);
 
 	useEffect(() => {
 		const ids = character.episode.map((episode) =>
@@ -21,20 +26,64 @@ export const EpisodesFragment: React.FC<EpisodesFragmentProps> = ({
 		);
 		fetchEpisodes
 			.fetch({ ids })
-			.then((res) => setEpisodes(res as any))
+			.then((res) => setEpisodes(res))
 			.finally(() => setLoading(false));
 	}, []);
 
 	return (
-		<div>
+		<Styled.Container>
 			{loading && <Loading />}
 			{!loading && (
-				<div>
-					{episodes.map((episode) => (
-						<span>{episode.name}</span>
-					))}
-				</div>
+				<>
+					<Tabs
+						value={index}
+						onChange={(e, value) => setIndex(value)}
+						variant="scrollable"
+						scrollButtons="auto"
+					>
+						{episodes.map((episode) => (
+							<Tab label={episode.episode} />
+						))}
+					</Tabs>
+					<Styled.TabContainer>
+						<Styled.DataRow>
+							<Styled.DataSubtitle>
+								{Strings.Label.Id}
+							</Styled.DataSubtitle>
+							<Styled.DataText>
+								{episodes[index].id}
+							</Styled.DataText>
+						</Styled.DataRow>
+
+						<Styled.DataRow>
+							<Styled.DataSubtitle>
+								{Strings.Label.Name}
+							</Styled.DataSubtitle>
+							<Styled.DataText>
+								{episodes[index].name}
+							</Styled.DataText>
+						</Styled.DataRow>
+
+						<Styled.DataRow>
+							<Styled.DataSubtitle>
+								{Strings.Label.AirDate}
+							</Styled.DataSubtitle>
+							<Styled.DataText>
+								{episodes[index].air_date}
+							</Styled.DataText>
+						</Styled.DataRow>
+
+						<Styled.DataRow>
+							<Styled.DataSubtitle>
+								{Strings.Label.Episode}
+							</Styled.DataSubtitle>
+							<Styled.DataText>
+								{episodes[index].episode}
+							</Styled.DataText>
+						</Styled.DataRow>
+					</Styled.TabContainer>
+				</>
 			)}
-		</div>
+		</Styled.Container>
 	);
 };

@@ -57,3 +57,43 @@ export namespace CharacterDataFragmentStyles {
 		color: ${({ theme }) => theme.palette.secondary.main};
 	`;
 }
+
+export namespace EpisodesFragmentStyles {
+	export const Container = styled('div')`
+		width: 100%;
+		max-width: 1200px;
+		background-color: ${({ theme }) => theme.palette.background.paper};
+		box-shadow: ${({ theme }) => theme.shadows[5]};
+		margin: 30px 0;
+	`;
+
+	export const TabContainer = styled('div')`
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 30px;
+
+		border-top: 1px solid ${({ theme }) => theme.palette.divider};
+	`;
+
+	export const DataRow = styled('div')`
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 5px;
+		text-align: left;
+		width: 100%;
+	`;
+
+	export const DataText = styled('span')`
+		font-size: 2rem;
+	`;
+
+	export const DataSubtitle = styled('label')`
+		font-size: 1rem;
+		text-transform: uppercase;
+		color: ${({ theme }) => theme.palette.primary.main};
+	`;
+}

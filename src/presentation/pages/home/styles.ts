@@ -9,21 +9,7 @@ export namespace HomePageStyles {
 		align-items: center;
 	`;
 
-	export const ListContainer = styled('div')`
-		flex: 1;
-		margin: auto;
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: flex-start;
-		flex-wrap: wrap;
-		width: 100%;
-		max-width: 1600px;
-		margin-bottom: 100px;
-		min-height: calc(100vh - 200px); ;
-	`;
-
-	export const BaseContainer = styled('div')`
+	export const LoadingContainer = styled('div')`
 		flex: 1;
 		flex-direction: column;
 		display: flex;
@@ -58,5 +44,21 @@ export namespace ErrorFragmentStyles {
 		flex-direction: row;
 		flex-wrap: wrap;
 		width: 100%;
+	`;
+}
+
+export namespace ListFragmentStyles {
+	export const Container = styled('div')`
+		flex: 1;
+		margin: auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		max-width: 1600px;
+		margin-bottom: 100px;
+		min-height: calc(100vh - 200px); ;
 	`;
 }

@@ -5,11 +5,15 @@ import { CharacterCardStyle as Styled } from './style';
 
 export type CharacterCardProps = {
 	character: Character.Model;
+	clickHandler: (character: Character.Model) => void;
 };
 
-export const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+export const CharacterCard: React.FC<CharacterCardProps> = ({
+	character,
+	clickHandler,
+}) => {
 	return (
-		<Styled.Container>
+		<Styled.Container onClick={() => clickHandler(character)}>
 			<Styled.Image imageSrc={character.image} />
 
 			<Styled.DataContainer className=" __divisor">

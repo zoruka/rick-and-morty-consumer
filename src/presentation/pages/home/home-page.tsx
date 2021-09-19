@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FindCharacters } from '@/domain/usecases';
 import { Character } from '@/domain/models';
-import { CharacterCard, FooterPager, Loading } from '@/presentation/components';
+import { Loading } from '@/presentation/components';
 import { HomePageStyles as Styled } from './styles';
 import { API } from '@/domain/models/api';
 import { useContext } from '@/presentation/context';
 import { ErrorFragment } from './error-fragment';
+import { ListFragment } from './list-fragment';
 
 type Props = {
 	findCharacters: FindCharacters;
@@ -47,20 +48,12 @@ export const HomePage: React.FC<Props> = ({ findCharacters }) => {
 	return (
 		<Styled.Container>
 			{loading && (
-				<Styled.BaseContainer>
+				<Styled.LoadingContainer>
 					<Loading />
-				</Styled.BaseContainer>
+				</Styled.LoadingContainer>
 			)}
 			{!loading && !hasError && (
-				<>
-					<Styled.ListContainer>
-						{characters &&
-							characters.map((character) => (
-								<CharacterCard character={character} />
-							))}
-					</Styled.ListContainer>
-					<FooterPager info={info} />
-				</>
+				<ListFragment characters={characters} info={info} />
 			)}
 			{!loading && hasError && <ErrorFragment reload={fetchData} />}
 		</Styled.Container>

@@ -50,7 +50,6 @@ describe('NetworkFetchCharacterById', () => {
 		expect(spy).toBeCalledWith({
 			method: 'get',
 			url: 'character_path/1',
-			params,
 		});
 	});
 

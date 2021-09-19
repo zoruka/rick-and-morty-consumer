@@ -51,7 +51,6 @@ describe('NetworkFetchEpisodes', () => {
 		expect(spy).toBeCalledWith({
 			method: 'get',
 			url: 'episodes_path/1,2,3',
-			params,
 		});
 	});
 

@@ -56,10 +56,6 @@ export namespace FooterPagerStyles {
 
 		margin: 0 3px;
 
-		&.__edge {
-			margin: 0 15px;
-		}
-
 		&.__active {
 			background-color: ${({ theme }) => theme.palette.secondary.main};
 			color: ${({ theme }) => theme.palette.background.paper};

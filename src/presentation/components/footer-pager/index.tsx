@@ -5,6 +5,7 @@ import {
 	useContextDispatcher,
 } from '@/presentation/context';
 import React, { useEffect, useState } from 'react';
+import { MainSectionStyles } from '../main-section/styles';
 import { Strings } from './strings';
 import { FooterPagerStyles as Styled } from './styles';
 
@@ -41,7 +42,9 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ info }) => {
 			const buttonSize = 45;
 
 			const width =
-				window.innerWidth < 600 ? window.innerWidth - 90 : 600;
+				window.innerWidth < MainSectionStyles.MinWidth
+					? window.innerWidth - 2 * buttonSize
+					: MainSectionStyles.MinWidth;
 
 			const total = Math.min(Math.floor(width / buttonSize), info.pages);
 
@@ -60,6 +63,9 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ info }) => {
 				newPages.push(i);
 			}
 
+			if (from > 1) newPages[0] = 1;
+			if (to < info.pages) newPages[newPages.length - 1] = info.pages;
+
 			setPages(newPages);
 		};
 		resize();
@@ -74,7 +80,6 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ info }) => {
 		<Styled.Container>
 			<Styled.PagerContainer>
 				<Styled.Button
-					className="__edge"
 					onClick={() => changePage(-1)}
 					style={{ opacity: currentPage === 1 ? 0 : 1 }}
 				>{`<`}</Styled.Button>
@@ -88,7 +93,6 @@ export const FooterPager: React.FC<FooterPagerProps> = ({ info }) => {
 					</Styled.Button>
 				))}
 				<Styled.Button
-					className="__edge"
 					onClick={() => changePage(1)}
 					style={{ opacity: currentPage === info.pages ? 0 : 1 }}
 				>{`>`}</Styled.Button>

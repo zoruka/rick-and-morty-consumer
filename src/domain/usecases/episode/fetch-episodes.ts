@@ -1,4 +1,3 @@
-import { API } from '@/domain/models/api';
 import { Episode } from '../../models';
 
 export interface FetchEpisodes {
